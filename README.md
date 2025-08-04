@@ -1,14 +1,14 @@
-#Changing Population Exposure to Extreme Heat Days in Africa
+# Changing Population Exposure to Extreme Heat Days in Africa
 
 
 This repository documents the procedure used to develop maps of climate heat indicators for Africa based on [CORDEX AFR-22](https://cordex.org/experiment-guidelines/cordex-cmip5/cordex-core/cordex-core-simulations/) data.
 
 We follow the workflow described in the paper:
 
-**Weber, T., Bowyer, P., Rechid, D., Pfeifer, S., Raffaele, F., Remedio, A. R., et al. (2020). Analysis of compound climate extremes and exposed population in Africa under two different emission scenarios. Earth's Future, 8, e2019EF001473. https://doi.org/10.1029/2019EF001473**
+*Weber, T., Bowyer, P., Rechid, D., Pfeifer, S., Raffaele, F., Remedio, A. R., et al. (2020). Analysis of compound climate extremes and exposed population in Africa under two different emission scenarios. Earth's Future, 8, e2019EF001473. https://doi.org/10.1029/2019EF001473*
 
 
-##Ingredients:
+## Ingredients:
 
 ### Climate Index
 
