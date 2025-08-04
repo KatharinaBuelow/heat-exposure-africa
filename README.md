@@ -1,4 +1,4 @@
-# Changing Population Exposure to Extreme Heat Days in Africa
+# Population Exposure to Extreme Heat Days in Africa
 
 
 This repository documents the procedure used to develop maps of climate heat indicators for Africa based on [CORDEX AFR-22](https://cordex.org/experiment-guidelines/cordex-cmip5/cordex-core/cordex-core-simulations/) data.
