@@ -1,16 +1,7 @@
 #!/usr/bin/env python3
 
 import os
-import pandas as pd
-
-import numpy as np
-import glob
-import matplotlib.pyplot as plt
-import pandas as pd
-import seaborn as sns
-import xarray as xr
 import cftime
-
 
 def directory_available(dir):
     if not os.path.exists(dir):
