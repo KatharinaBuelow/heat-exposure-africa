@@ -18,8 +18,7 @@ For the calculation of the number of extrem heat days (maximum temperature > 40Â
 
 The information about the [population](population.md) data source. 
 
-With the following Notebook you can remap the population files and with the second Notebook you can calculate the country sum of the population for different time slices and compare their development.
-(Katharina environment xesmv_env)
+With the following Notebook you can remap the population files.
 
     Notebooks/remap_population_to_afr22.ipynb
 
