@@ -12,7 +12,7 @@ We follow the workflow described in the paper:
 
 ### Climate Index
 
-For the calculation of the Number of extrem heat days (maximum temperature > 40°C) we use the [index_calculator](https://github.com/climate-service-center/index_calculator). This is using [xclim](https://github.com/Ouranosinc/xclim)
+For the calculation of the number of extrem heat days (maximum temperature > 40°C) we use the [index_calculator](https://github.com/climate-service-center/index_calculator). This is using [xclim](https://github.com/Ouranosinc/xclim)
 
 ### Future Population
 
@@ -34,5 +34,11 @@ For the climate change signal, you can follow the steps as before and use the ou
 
     Notebooks/horiplot-exposure-diff-robust-bulletin.ipynb
     Notebooks/plotting_tools_exposure.py
+
+
+
+## Contact
+
+katharina.buelow@hereon.de and torsten.weber@hereon.de
 
 
