@@ -15,6 +15,16 @@ def savefig(plot, name, dpi):
     print('plot ist saved in : ', name)
     return
 
+def only_land_points(data):
+    '''Mask out ocean data using land-sea mask if available'''
+
+    # Land sea mask
+    lsm=xr.open_dataset('/work/ch0636/g300047/cicles/lsm_afr22_common_ohne_pur_wasser.nc')
+
+    land_mask = lsm['sftlf'].where(lsm['sftlf'] == 1)
+    data_variable= data.where(land_mask.values == 1)
+
+    return data_variable
 
 def plot_2diff_pop(
         pop_diff_ssp1,
@@ -70,6 +80,7 @@ def plot_2diff_pop(
             ax.set_extent([-25, 20, -0.75, 27.3])
             # Space between rows:
             fig.subplots_adjust(hspace=0.03)
+            fig.subplots_adjust(wspace=0.25)
         else:
             region='Africa'
             ax.set_extent([-20, 60, -35, 35])
@@ -79,6 +90,7 @@ def plot_2diff_pop(
         print('file: ',file)
         data = xr.open_dataset(file,decode_timedelta=False)
         data_variable = data[var]/1000
+        data_variable = only_land_points(data_variable)
         
         varname='Number of People'
         unit='Number*10³'
@@ -89,7 +101,7 @@ def plot_2diff_pop(
                  #fontweight='bold', 
                  x=0.5,
                  fontsize=14,
-                 position=(0.5, 0.99),
+                 position=(0.5, 0.9),
                  )  
                 
         im = data_variable.plot(ax=ax1,
@@ -107,6 +119,7 @@ def plot_2diff_pop(
 
         data = xr.open_dataset(file,decode_timedelta=False)
         data_variable = data[var]/1000
+        data_variable = only_land_points(data_variable)
         im = data_variable.plot(ax=ax2,
                            levels=levels,
                            colors=colors,
@@ -148,10 +161,19 @@ def plot_absolute_pop(
     # Some graphical features:
     # set the colors, special case for population:
     levels=[0,5,10,20,30,60,90,120,150,180,210,240,270]
-    colors=['#d9d9d9','#ffffff','#f5f5f5','#c7eae5',
-            '#80cdc1','#66c2a4','#35978f','#01665e','#003c30',
-            '#f6e8c3',
-            '#dfc27d','#bf812d',"#a35414","#854e0c",'#543005',]
+    if var == 'number_of_people':
+        # For person events, we use a different color scheme:
+        colors=['#d9d9d9','#ffffff','#f5f5f5','#c7eae5',
+                '#80cdc1','#66c2a4','#35978f','#01665e','#003c30',
+                '#f6e8c3',
+                '#dfc27d','#bf812d',"#a35414","#854e0c",'#543005',]
+    elif var == 'person_events':
+        # For number of people, we use a different color scheme:
+            levels=[0,300,600,900,1200,1500,1800,2100,2400,2700]
+            colors=['#d9d9d9',"#fdfde8",'#ffffcc','#ffeda0','#fed976',
+            '#feb24c','#fd8d3c','#fc4e2a',
+            '#e31a1c','#bd0026','#800026',"#4B0117"]
+
     
     font = {
         'family' : 'sans-serif',
@@ -182,6 +204,7 @@ def plot_absolute_pop(
             )
             ax.coastlines(resolution="50m", color="black", linewidth=1)
             ax.add_feature(cf.BORDERS)
+            ax.add_feature(cf.OCEAN, facecolor='#f0f0f0')
             
             if westafrica is True:
                 region='West_Africa'
@@ -195,15 +218,20 @@ def plot_absolute_pop(
     for i, file in enumerate(pop_ssp1):
         print(file)
         data = xr.open_dataset(file,decode_timedelta=False)
-        data_variable=data[var]/1000    
+        data_variable=data[var]/1000
+        data_variable = only_land_points(data_variable)
         # Select labels // Units frome metadata
         # Set title of plot
         if var =='number_of_people':
             varname='Number of People'
             unit='Number * 10³'
+        if var =='person_events':
+            print(var)
+            varname='Person Events'
+            unit='Person Events * 10³'
 
-        s = "{} {}".format(varname, title)
-    
+        s = "{} / {}".format(varname, title)
+
         fig.suptitle(s+": ", 
                  fontsize=14, 
                  #fontweight='bold', 
@@ -226,9 +254,15 @@ def plot_absolute_pop(
     for i, file in enumerate(pop_ssp3):
         data = xr.open_dataset(file,decode_timedelta=False)
         data_variable=data[var]/1000
+        data_variable = only_land_points(data_variable)
         if var =='number_of_people':
             varname='Number of People'
             unit='Number *10³'
+        if var =='person_events':
+            varname='Person Events'
+            unit='Person Events *10³'
+
+
         im = data_variable.plot(ax=axes[1, i],
                            levels=levels,
                            colors=colors,
@@ -320,13 +354,13 @@ def plot_2_diff_exposure(
     varname='Exposure'
     unit='Person-Events *10⁶'
 
-    s = "{} {}".format(title,varname)
+    s = "{}".format(title)
     
     fig.suptitle(s+": ", 
                  #fontweight='bold', 
                  x=0.5,
                  fontsize=14,
-                 position=(0.5, 0.99),
+                 position=(0.5, 0.9),
                  )  
 
     im = mask_data.plot(ax=ax1,
