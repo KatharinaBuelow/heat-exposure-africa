@@ -24,7 +24,7 @@ For the calculation of the number of extrem heat days (maximum temperature > 40Â
 
 ### Future Population
 
-The information about the [population](population.md) data source. 
+The information about the [population and scenarios](population.md) data source. 
 
 With the following Notebook you can remap the population files and calculate the country sum .
 
