@@ -342,6 +342,7 @@ def plot_2_diff_exposure(
             ax.set_extent([-25, 20, -0.75, 27.3])
             # Space between rows:
             fig.subplots_adjust(hspace=0.03)
+            fig.subplots_adjust(wspace=0.25)
         else:
             region='Africa'
             ax.set_extent([-20, 60, -35, 35])
