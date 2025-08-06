@@ -29,7 +29,6 @@ The information about the [population](population.md) data source.
 With the following Notebook you can remap the population files and calculate the country sum .
 
     Notebooks/remap_population_to_afr22.ipynb
-    Notebooks/country_sum_population_to_afr22.ipynb
 
 ### Exposure
 
@@ -45,10 +44,16 @@ $\Delta E = P_r \times \Delta C + C_r \times \Delta P + \Delta C \times \Delta P
 
 ### Exposure calculation and plotting
 
-The following Notebook produces the horizontal exposure maps for ssp1/rcp2 and ssp3/rcp85 of population to extrem heat days. The plots show the timeslice  1991-2024 and 2031-2060 as well as its future changes. 
+The following Notebook produces the horizontal exposure maps for ssp1/rcp2 and ssp3/rcp85 of population to extrem heat days. The plots show the timeslice 1991-2024 and 2031-2060 as well as its future changes. 
 
     Notebooks/horiplot-exposure-diff-robust-bulletin.ipynb
+    
+    functions are used from:
     Notebooks/plotting_tools_exposure.py
+    Notebooks/plotting_tools_africa.py
+    Notebooks/format_data_tools.py
+    Notebooks/colors_indices.py
+    
 
 ### References
 
