@@ -36,7 +36,7 @@ With the following Notebook you can remap the population files and calculate the
 The change of population and the climate change signal for specific indicators are combined. [Literature](exposure.md)
 
 
-<img src="plot/exposure_diff-robust_West_Africa_1200.png" alt="TS" width="20%" />
+<img src="plot/exposure_diff-robust_West_Africa_1200.png" alt="TS" width="50%" />
 
 
 The exposure of the population to extreme heat days is calculated in the next Notebook.
