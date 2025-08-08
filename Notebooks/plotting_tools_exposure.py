@@ -15,11 +15,11 @@ def savefig(plot, name, dpi):
     print('plot ist saved in : ', name)
     return
 
-def only_land_points(data):
+def only_land_points(data,datadir):
     '''Mask out ocean data using land-sea mask if available'''
 
     # Land sea mask
-    lsm=xr.open_dataset('/work/ch0636/g300047/cicles/lsm_afr22_common_ohne_pur_wasser.nc')
+    lsm=xr.open_dataset(datadir+'/lsm_afr22_common_ohne_pur_wasser.nc')
 
     land_mask = lsm['sftlf'].where(lsm['sftlf'] == 1)
     data_variable= data.where(land_mask.values == 1)
@@ -34,6 +34,7 @@ def plot_2diff_pop(
         var="",
         westafrica=None,
         user_dpi=300,
+        datadir="",
         ):
 
     from cartopy import crs as ccrs
@@ -90,7 +91,7 @@ def plot_2diff_pop(
         print('file: ',file)
         data = xr.open_dataset(file,decode_timedelta=False)
         data_variable = data[var]/1000
-        data_variable = only_land_points(data_variable)
+        data_variable = only_land_points(data_variable,datadir)
         
         varname='Number of People'
         unit='Number*10³'
@@ -119,7 +120,7 @@ def plot_2diff_pop(
 
         data = xr.open_dataset(file,decode_timedelta=False)
         data_variable = data[var]/1000
-        data_variable = only_land_points(data_variable)
+        data_variable = only_land_points(data_variable,datadir)
         im = data_variable.plot(ax=ax2,
                            levels=levels,
                            colors=colors,
@@ -150,6 +151,7 @@ def plot_absolute_pop(
         user_dpi=300,
         rows=2, 
         columns=2,
+        datadir="",
         ):
 
     print(pop_ssp1)
@@ -219,7 +221,7 @@ def plot_absolute_pop(
         print(file)
         data = xr.open_dataset(file,decode_timedelta=False)
         data_variable=data[var]/1000
-        data_variable = only_land_points(data_variable)
+        data_variable = only_land_points(data_variable, datadir)
         # Select labels // Units frome metadata
         # Set title of plot
         if var =='number_of_people':
@@ -248,13 +250,13 @@ def plot_absolute_pop(
                             #alpha=.8,
                             )
         # This is not very clever, need to be adjusted according to file_name :-(
-        axes[0, i].set_title(f'ssp1: {file.split("_")[1]}-{file.split("_")[2]}',fontsize=12)
+        axes[0, i].set_title(f'ssp1: {file.split("_")[2]}-{file.split("_")[3]}',fontsize=12)
 
     # Plot data for ssp3
     for i, file in enumerate(pop_ssp3):
         data = xr.open_dataset(file,decode_timedelta=False)
         data_variable=data[var]/1000
-        data_variable = only_land_points(data_variable)
+        data_variable = only_land_points(data_variable, datadir)
         if var =='number_of_people':
             varname='Number of People'
             unit='Number *10³'
@@ -271,8 +273,8 @@ def plot_absolute_pop(
                            add_colorbar=False,
                            #alpha=.8,
                            )
-        
-        axes[1, i].set_title(f'SSP3: {file.split("_")[1]}-{file.split("_")[2]}',fontsize=12)
+
+        axes[1, i].set_title(f'SSP3: {file.split("_")[2]}-{file.split("_")[3]}',fontsize=12)
 
     cbar_ax = fig.add_axes([0.15, 0.02, 0.7, 0.03])
     fig.colorbar(im, cax=cbar_ax, orientation="horizontal", label='[ '+unit+' ]')
@@ -385,8 +387,8 @@ def plot_2_diff_exposure(
                         extend='both',
                         transform=ccrs.PlateCarree()
                         )
-
-    ax1.set_title(f'SSP1/RCP26: {robust_rcp26.split("_")[5]}-{robust_rcp26.split("_")[6]}',fontsize=12)
+    print(robust_rcp26)
+    ax1.set_title(f'SSP1/RCP26: {robust_rcp26.split("_")[3]}-{robust_rcp26.split("_")[4]}',fontsize=12)
 
     # Plot data for rcp85
     data = xr.open_dataset(exposure_ssp3,decode_timedelta=False)
@@ -415,7 +417,7 @@ def plot_2_diff_exposure(
                     extend='both',
                     transform=ccrs.PlateCarree()
             )
-        ax2.set_title(f'SSP3/RCP85: {robust_rcp85.split("_")[5]}-{robust_rcp85.split("_")[6]}',fontsize=12)
+        ax2.set_title(f'SSP3/RCP85: {robust_rcp85.split("_")[3]}-{robust_rcp85.split("_")[4]}',fontsize=12)
 
     cbar_ax = fig.add_axes([0.15, 0.1, 0.7, 0.05])
     fig.colorbar(im, cax=cbar_ax, orientation="horizontal", label='[ '+unit+' ]')
