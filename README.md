@@ -53,7 +53,9 @@ The following Notebook produces the horizontal exposure maps for ssp1/rcp2 and s
     Notebooks/plotting_tools_africa.py
     Notebooks/format_data_tools.py
     Notebooks/colors_indices.py
-    
+
+### Data    
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.16782087.svg)](https://doi.org/10.5281/zenodo.16782087)
 
 ### References
 
