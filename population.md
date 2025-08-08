@@ -11,11 +11,6 @@ Franziska Piontek, Tobias Geiger (2017): ISIMIP2b secondary population input dat
 note:
 For the 0.5-resolution version there is an Issue (read online) the 2.5 minute-resolution file is free for use (CC0 1.0)
 
-locally stored in:
-
-	/work/ch0636/g300047/cicles/population
-
-
 # Exposure maps:
 
 For the exposure maps *rcp* climate simulations are combined with the population development of the *ssps*, therefore it is usefull to look at some basics
