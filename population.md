@@ -36,12 +36,12 @@ For the exposure maps *rcp* climate simulations are combined with the population
 
 
 | Szenario | Population 2100 (Mrd)| Development
-|----------|----------------------|---------------------------------------------------|
-|SSP1      | ~7.8                 | Rückgang nach 2050 durch Bildung & Gleichstellung |
-|SSP2      | ~10.0                | Stetiges Wachstum                                 |
-|SSP3      | ~12.6                | Höchstes Wachstum, geringe Entwicklung            |
-|SSP4      | ~10.4                | Ungleich verteilt – hoch in Entwicklungsländern   |
-|SSP5      | ~9.0                 | Wachstum flacht ab durch Urbanisierung            |
+|----------|----------------------|-----------------------------------------------------------------|
+|SSP1      | ~7.8                 | Decline after 2050 due to education & gender equality           |
+|SSP2      | ~10.0                | Continuous growth                                               |
+|SSP3      | ~12.6                | Strongest growth, limited development                           |
+|SSP4      | ~10.4                | Unequally distributed, with high levels in developing countries |
+|SSP5      | ~9.0                 | Growth tapers off due to urbanization                           |
 
 
 SSPs are often paired with RCPs to create more realistic scenarios,
